@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.sudagoarth'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Web starter (for REST APIs)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot Security starter (for securing APIs)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Spring Boot OAuth2 Resource Server starter (for OAuth2 resource server)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+    // Keycloak Spring Security Adapter (for Keycloak integration)
+    implementation 'org.keycloak:keycloak-spring-security-adapter:21.1.1'
+
+    // MySQL connector (use MySQL database)
+    runtimeOnly 'mysql:mysql-connector-java:8.0.29'
+
+    // Spring Boot JPA starter (for Spring Data JPA integration)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Hibernate core (for JPA implementation, use Hibernate 6)
+    implementation 'org.hibernate:hibernate-core:6.1.5.Final'
+
+    // For development tools like automatic restarts, etc.
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+    // Spring Boot testing starter (for unit tests)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+springBoot {
+    mainClass = 'com.sudagoarth._Auth.Application'
+}
